@@ -1,36 +1,50 @@
 // import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import { Detail } from './components/Detail';
+import {Form} from './components/Form';
 
 function App() {
+  const [state,setState] = useState(false);
+  const [data,setData] = useState(<Form/>);
+  const [rule,setRule] = useState([{default:""}])
+  const handlebutton=()=>{
+    setState(!state);
+    if(!state){
+      setData(<Detail/>);
+    }
+    else{
+      setData(<Form/>)
+    }
+  }
+  const handlerule=()=>{
+    if(rule.length<=5){
+      setRule([...rule,{default:""}])
+    }
+    else{
+      setRule([rule])
+    }
+  }
   return (
     <div className="App">
-      <h2>Default </h2>
-      <p>Button-Name</p>
-      <input type="text" placeholder='Button-Name' />
+      <h2>Rule {rule.length}</h2>
+     { rule.map((e,i)=>{
+        return(
+          <div key={i}>
+            {rule.length<=5&&<input type="text" placeholder='Default Rule' />}
+          </div>
+        )
+      })}
       <div>
-        <select name="" id="">
-          <option value="">All</option>
-        </select>
-        <p>of the following conditions are met:</p>
+          <button onClick={handlerule}>Add New Rule</button>
       </div>
+      <div className='done'>
+      <button className='done' onClick={handlebutton}>{state?"Edit":"Done"}</button>
       <div>
-        <select name="" id="">
-          <option value="">Text</option>
-        </select>
-        <select name="" id="">
-          <option value="">Contains</option>
-        </select>
+        {data}
       </div>
-      <div>
-        <button>Add New Condition</button>
       </div>
-      <br />
-       <p>Perform the following action:</p>
-      <input type="text" placeholder='Button-Name' />
-      <br />
-      <div>
-        <button>Add another action</button>
-      </div>
+      
     </div>
   );
 }
