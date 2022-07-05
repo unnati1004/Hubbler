@@ -93,7 +93,7 @@ export const Form = () => {
       }
       
       <div>
-        <button onClick={handlerow}>Add New Condition</button>
+        <button disabled={newdata.length===8} onClick={handlerow}>Add New Condition</button>
       </div>
       <br />
       <p>Perform the following action:</p>

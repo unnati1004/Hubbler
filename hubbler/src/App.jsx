@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import { useState } from 'react';
 import './App.css';
 import { Detail } from './components/Detail';
@@ -21,22 +20,21 @@ function App() {
     if(rule.length<=5){
       setRule([...rule,{default:""}])
     }
-    else{
-      setRule([rule])
-    }
   }
   return (
     <div className="App">
+      <div id="data">
       <h2>Rule {rule.length}</h2>
      { rule.map((e,i)=>{
         return(
-          <div key={i}>
+          <div key={i} >
             {rule.length<=5&&<input type="text" placeholder='Default Rule' />}
           </div>
         )
       })}
       <div>
-          <button onClick={handlerule}>Add New Rule</button>
+          <button disabled={rule.length===5} onClick={handlerule}>Add New Rule</button>
+      </div>
       </div>
       <div className='done'>
       <button className='done' onClick={handlebutton}>{state?"Edit":"Done"}</button>
@@ -44,7 +42,7 @@ function App() {
         {data}
       </div>
       </div>
-      
+       
     </div>
   );
 }

@@ -1,7 +1,7 @@
 .App {
   border: 1px solid black;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-around;
   /* text-align: center; */
 }
@@ -10,4 +10,8 @@
 }
 .done{
   float: right;
+}
+#data{
+  display: flex;
+  flex-direction: column;
 }
