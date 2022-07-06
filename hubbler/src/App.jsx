@@ -1,20 +1,14 @@
 import { useState } from 'react';
 import './App.css';
-import { Detail } from './components/Detail';
 import {Form} from './components/Form';
 
 function App() {
   const [state,setState] = useState(false);
-  const [data,setData] = useState(<Form/>);
-  const [rule,setRule] = useState([{default:""}])
+  const [rule,setRule] = useState([{default:""}]);
+  const [but,setBut] = useState(true);
   const handlebutton=()=>{
     setState(!state);
-    if(!state){
-      setData(<Detail/>);
-    }
-    else{
-      setData(<Form/>)
-    }
+    setBut(!but);
   }
   const handlerule=()=>{
     if(rule.length<=5){
@@ -33,13 +27,16 @@ function App() {
         )
       })}
       <div>
-          <button disabled={rule.length===5} onClick={handlerule}>Add New Rule</button>
+        {
+          but?
+          <button disabled={rule.length===5} onClick={handlerule}>Add New Rule</button>:""
+        }
       </div>
       </div>
       <div className='done'>
       <button className='done' onClick={handlebutton}>{state?"Edit":"Done"}</button>
       <div>
-        {data}
+       <Form but={but} />
       </div>
       </div>
        

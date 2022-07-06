@@ -3,6 +3,7 @@
     width: 700px;
     padding: 5%;
     height: 100vh;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .all{
     display: flex;
