@@ -1,12 +1,12 @@
 .App {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
   /* align-items: center; */
   justify-content: space-around;
   /* text-align: center; */
 }
 .App>div{
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 .done{
   float: right;

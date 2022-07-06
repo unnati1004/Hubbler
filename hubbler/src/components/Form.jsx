@@ -5,11 +5,11 @@ import { alpha, styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
-
+import axios from "axios";
 export const Form = ({but}) => {
   const [newdata, setNewdata] = useState([{ row: "" }]);
   const [newaction, setNewaction] = useState([{ action: "" }]);
-  
+  const [data,setData] = useState({name:""});
   const BootstrapInput = styled(InputBase)(({ theme }) => ({
     "label + &": {
       marginTop: theme.spacing(3),
@@ -67,17 +67,28 @@ export const Form = ({but}) => {
   };
 
   const handlechange=(e)=>{
-    const {value} = e.target;
-    console.log(value);
-    
+   const {value} = e.target;
+   setData({
+    "name":value
+   })
   }
+    const handlepost=(data)=>{
+      axios.post("http://localhost:3001/button-name").then((res)=>{
+        console.log(res)
+  }).catch((err)=>{
+    console.log(err)
+  })
+    }
+
+
   return (
     <div className="form">
       <h2>Default Rule</h2>
       <InputLabel shrink htmlFor="bootstrap-input">
        Button-Name
       </InputLabel>
-      <BootstrapInput defaultValue="Button-Name" id="bootstrap-input" onChange={handlechange} />
+      <BootstrapInput  id="bootstrap-input" name="name" onChange={handlechange} placeholder={"name"} />
+      <button onClick={()=>{handlepost()}}>ADD</button>
       <div className="all">
         <select name="" id="">
           <option value="">All</option>
