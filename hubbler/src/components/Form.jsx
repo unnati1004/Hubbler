@@ -69,10 +69,11 @@ export const Form = ({but}) => {
   const handlechange=(e)=>{
     const {value} = e.target;
     console.log(value);
+    
   }
   return (
     <div className="form">
-      <h2>Default </h2>
+      <h2>Default Rule</h2>
       <InputLabel shrink htmlFor="bootstrap-input">
        Button-Name
       </InputLabel>

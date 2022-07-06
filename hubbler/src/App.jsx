@@ -16,6 +16,10 @@ function App() {
     }
   }
   return (
+    <div>
+        <div className='navbar'>
+          <span>Demo custom app {'>'} Assesment {'>'} Create PO {'>'} Button Rule</span>
+        </div>
     <div className="App">
       <div id="data">
       <h2>Rule {rule.length}</h2>
@@ -40,6 +44,7 @@ function App() {
       </div>
       </div>
        
+    </div>
     </div>
   );
 }
